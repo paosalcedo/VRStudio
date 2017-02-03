@@ -12,6 +12,14 @@ public class FaceForceScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//if(Camera.main.transform.Translate (0f, 2f, 0f));//return to normal head height
-			
+		if (Camera.main.transform.eulerAngles.y > 10f && Camera.main.transform.eulerAngles.y <= 180f) 
+		{
+			Debug.Log ("head turn right!");
+		}
+
+		if (Camera.main.transform.eulerAngles.y < 350f && Camera.main.transform.eulerAngles.y > 180f ) {
+			Debug.Log ("head turn left!");
+		}
+
 	}
 }
