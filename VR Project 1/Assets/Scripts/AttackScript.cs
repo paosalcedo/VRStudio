@@ -7,7 +7,7 @@ public class AttackScript : MonoBehaviour {
 	GameObject launcher;
 	//public float rocketImpulse = 50.0f;
 //	public float cooldown =1f;
-	public float ballCooldown;
+	//public float ballCooldown;
 //	public float cooldownRemaining;
 	//public AudioSource rocketSound;
 	public float timeUntilNextBall;
