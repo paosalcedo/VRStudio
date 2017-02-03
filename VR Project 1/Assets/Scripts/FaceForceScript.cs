@@ -11,7 +11,7 @@ public class FaceForceScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Camera.main.transform.Translate (0f, 2f, 0f);//return to normal head height
+		//if(Camera.main.transform.Translate (0f, 2f, 0f));//return to normal head height
 			
 	}
 }
