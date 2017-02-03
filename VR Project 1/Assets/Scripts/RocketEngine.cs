@@ -12,13 +12,13 @@ public class RocketEngine : MonoBehaviour {
 //	public float deflectForceUp;
 	public float timeAlive;
 	Rigidbody rb;
-	public bool hasDeflected;
+
 
 	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
-	}
+ 	}
 	 	 	
 	// Update is called once per frame
 	void FixedUpdate () 
@@ -46,6 +46,7 @@ public class RocketEngine : MonoBehaviour {
 //			&& Vector3.Distance (rb.transform.position, Camera.main.transform.position) < 10f 
 //			&& Camera.main.transform.eulerAngles.y < 350f 
 //			&& Camera.main.transform.eulerAngles.y > 180f) 
+
 		if (Vector3.Distance (rb.transform.position, Camera.main.transform.position) < deflectRange 
 			&& Camera.main.transform.eulerAngles.y < 350f 
 			&& Camera.main.transform.eulerAngles.y > 180f) 
@@ -64,10 +65,6 @@ public class RocketEngine : MonoBehaviour {
 		}
 	}
 
-	void ResetDeflect()
-	{
-		hasDeflected = false;
-	}
 
 
 //	void DeflectUp()
