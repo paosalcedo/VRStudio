@@ -9,6 +9,8 @@ public class RocketEngine : MonoBehaviour {
 	public float force;
 	public float deflectForce;
 	public float deflectRange;
+	public float minDeflectAngle;
+	public float maxDeflectAngle;
 //	public float deflectForceUp;
 	public float timeAlive;
 	Rigidbody rb;
@@ -32,10 +34,10 @@ public class RocketEngine : MonoBehaviour {
 
 		//kill balls 
 		timeAlive -= Time.deltaTime;
-//		if (timeAlive <= 0f) 
-//		{
-//			Destroy (gameObject);
-//		}
+		if (timeAlive <= 0f) 
+		{
+			Destroy (gameObject);
+		}
 		//player.GetComponent<Rigidbody> ();
 
 	}
@@ -58,8 +60,8 @@ public class RocketEngine : MonoBehaviour {
 	void DeflectRight()
 	{
 		if (Vector3.Distance (rb.transform.position, Camera.main.transform.position) < deflectRange 
-			&& Camera.main.transform.eulerAngles.y > 10f 
-			&& Camera.main.transform.eulerAngles.y <= 180f) 
+			&& Camera.main.transform.eulerAngles.y > minDeflectAngle
+			&& Camera.main.transform.eulerAngles.y <= maxDeflectAngle) 
 		{
 			rb.AddForce (Vector3.right * deflectForce);
 		}

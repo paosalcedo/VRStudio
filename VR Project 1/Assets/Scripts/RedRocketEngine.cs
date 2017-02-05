@@ -11,6 +11,8 @@ public class RedRocketEngine : MonoBehaviour {
 	public float force;
 	public float deflectForce;
 	public float deflectRange;
+	public float minDeflectAngle;
+	public float maxDeflectAngle;
 	//	public float deflectForceUp;
 	public float timeAlive;
 	Rigidbody rb;
@@ -25,21 +27,18 @@ public class RedRocketEngine : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		//	rb.AddForce(Vector3.back * force);
-		transform.Translate (transform.up * force * Time.deltaTime, Space.World);
-
-		//		if (GameObject.Find ("Main Camera").GetComponent<FaceForceScript> ().hasDeflected) {
+		//	rb.AddForce(Vector3.back * force); //move the projectiles using AddForce
+		transform.Translate (transform.up * force * Time.deltaTime, Space.World); //move the projectiles
+	
 		DeflectLeft ();
-		//DeflectRight ();
 
 		//kill balls 
 		timeAlive -= Time.deltaTime;
-		//		if (timeAlive <= 0f) 
-		//		{
-		//			Destroy (gameObject);
-		//		}
-		//player.GetComponent<Rigidbody> ();
-
+				if (timeAlive <= 0f) 
+				{
+					Destroy (gameObject);
+				}
+			
 	}
 
 	void DeflectLeft()
@@ -48,7 +47,7 @@ public class RedRocketEngine : MonoBehaviour {
 		//			&& Vector3.Distance (rb.transform.position, Camera.main.transform.position) < 10f 
 		//			&& Camera.main.transform.eulerAngles.y < 350f 
 		//			&& Camera.main.transform.eulerAngles.y > 180f) 
-		Debug.Log("Deflect left!");
+		//Debug.Log("Deflect left!");
 		if (Vector3.Distance (rb.transform.position, Camera.main.transform.position) < deflectRange 
 			&& Camera.main.transform.eulerAngles.y < 350f 
 			&& Camera.main.transform.eulerAngles.y > 180f) 
