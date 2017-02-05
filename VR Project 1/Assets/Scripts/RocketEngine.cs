@@ -25,9 +25,9 @@ public class RocketEngine : MonoBehaviour {
 	{
 	//	rb.AddForce(Vector3.back * force);
 		transform.Translate (transform.up * force * Time.deltaTime, Space.World);
-	
+			
 //		if (GameObject.Find ("Main Camera").GetComponent<FaceForceScript> ().hasDeflected) {
-		DeflectLeft ();
+		//DeflectLeft ();
 		DeflectRight ();
 
 		//kill balls 
@@ -40,20 +40,20 @@ public class RocketEngine : MonoBehaviour {
 
 	}
 
-	void DeflectLeft()
-	{
-//		if (!GameObject.Find ("Main Camera").GetComponent<FaceForceScript> ().hasDeflected 
-//			&& Vector3.Distance (rb.transform.position, Camera.main.transform.position) < 10f 
+//	void DeflectLeft()
+//	{
+////		if (!GameObject.Find ("Main Camera").GetComponent<FaceForceScript> ().hasDeflected 
+////			&& Vector3.Distance (rb.transform.position, Camera.main.transform.position) < 10f 
+////			&& Camera.main.transform.eulerAngles.y < 350f 
+////			&& Camera.main.transform.eulerAngles.y > 180f) 
+//
+//		if (Vector3.Distance (rb.transform.position, Camera.main.transform.position) < deflectRange 
 //			&& Camera.main.transform.eulerAngles.y < 350f 
 //			&& Camera.main.transform.eulerAngles.y > 180f) 
-
-		if (Vector3.Distance (rb.transform.position, Camera.main.transform.position) < deflectRange 
-			&& Camera.main.transform.eulerAngles.y < 350f 
-			&& Camera.main.transform.eulerAngles.y > 180f) 
-		{
-			rb.AddForce (Vector3.left * deflectForce);
-		}
-	}
+//		{
+//			rb.AddForce (Vector3.left * deflectForce);
+//		}
+//	}
 
 	void DeflectRight()
 	{

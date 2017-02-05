@@ -15,7 +15,7 @@ public class MyMouseLook : MonoBehaviour {
 			Camera.main.transform.Translate (0f, 2f, 0f);//return to normal head height
 		}
 
-		VRSettings.renderViewportScale = 0.1f; //render at 10% of original resolution
+		//VRSettings.renderViewportScale = 0.1f; //render at 10% of original resolution
 	}
 	
 	// Update is called once per frame

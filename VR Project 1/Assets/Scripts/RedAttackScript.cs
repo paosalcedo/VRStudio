@@ -1,45 +1,48 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class AttackScript : MonoBehaviour {
+public class RedAttackScript : MonoBehaviour {
 
 	public GameObject ball;
-	GameObject aimGuide; 
 	GameObject launcher;
+	GameObject aimGuide;
+
 	//public float rocketImpulse = 50.0f;
-//	public float cooldown =1f;
+	//	public float cooldown =1f;
 	//public float ballCooldown;
-//	public float cooldownRemaining;
+	//	public float cooldownRemaining;
 	//public AudioSource rocketSound;
 	public float timeUntilNextBall;
 	public float minTimeUntilNextBall;
 	public float maxTimeUntilNextBall;
 	public bool enableBalls;
 
+
 	// Use this for initialization
 	//Rigidbody rb;
 
 	void Start () {
-		aimGuide = GameObject.Find ("BlueAimGuide");
-		aimGuide.SetActive (false);
 		//	rb = GetComponent<Rigidbody> ();
-	//rocketSound = GetComponent<AudioSource>();
-		launcher = GameObject.Find ("BlueLauncher");
-		timeUntilNextBall = 2f;
+		//rocketSound = GetComponent<AudioSource>();
+		launcher = GameObject.Find ("RedLauncher");
+		timeUntilNextBall = 10f;
 
+		aimGuide = GameObject.Find ("RedAimGuide");
+		aimGuide.SetActive (false);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		timeUntilNextBall -= Time.deltaTime;
-//		cooldownRemaining -= Time.deltaTime;
-//		cooldownRemaining = Mathf.Clamp (cooldownRemaining, -0.1f, 0.5f);
+		//		cooldownRemaining -= Time.deltaTime;
+		//		cooldownRemaining = Mathf.Clamp (cooldownRemaining, -0.1f, 0.5f);
 
-//		if (Input.GetMouseButtonDown (0) || Input.GetButtonDown("Jump") && cooldownRemaining <= 0) 
+		//		if (Input.GetMouseButtonDown (0) || Input.GetButtonDown("Jump") && cooldownRemaining <= 0) 
 		if (timeUntilNextBall <= 0 && enableBalls == true)
 		{
 			//Debug.Log ("Fire!");
-//			cooldownRemaining = ballCooldown;
+			//			cooldownRemaining = ballCooldown;
 			//rocketSound.Play(); 
 			Instantiate (ball, launcher.transform.position, launcher.transform.rotation);
 			timeUntilNextBall = Random.Range (minTimeUntilNextBall, maxTimeUntilNextBall);
@@ -49,3 +52,4 @@ public class AttackScript : MonoBehaviour {
 		}
 	}
 }
+	
