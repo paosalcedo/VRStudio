@@ -74,7 +74,6 @@ public class WaveEngine : MonoBehaviour {
 			&& Camera.main.transform.eulerAngles.x < minDeflectAngle 
 			&& Camera.main.transform.eulerAngles.x > maxDeflectAngle || Input.GetButtonDown("Jump")) 
 			{
-			Debug.Log ("green DEFLECT");
 			//rb.AddForce (Vector3.up * deflectForceUp);
 			rb.AddExplosionForce(deflectForceUp, rb.transform.position, 25f);
 			}
