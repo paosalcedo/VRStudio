@@ -16,17 +16,24 @@ public class RedRocketEngine : MonoBehaviour {
 	//	public float deflectForceUp;
 	public float timeAlive;
 	Rigidbody rb;
+	AudioSource deflectSound;
+	bool soundHasPlayed;
+
 
 
 	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
+		deflectSound = GetComponent<AudioSource> ();
+		soundHasPlayed = false;
+
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
+
 		//	rb.AddForce(Vector3.back * force); //move the projectiles using AddForce
 		transform.Translate (transform.up * force * Time.deltaTime, Space.World); //move the projectiles
 	
@@ -41,6 +48,7 @@ public class RedRocketEngine : MonoBehaviour {
 			
 	}
 
+
 	void DeflectLeft()
 	{
 		//		if (!GameObject.Find ("Main Camera").GetComponent<FaceForceScript> ().hasDeflected 
@@ -52,7 +60,13 @@ public class RedRocketEngine : MonoBehaviour {
 			&& Camera.main.transform.eulerAngles.y < 350f 
 			&& Camera.main.transform.eulerAngles.y > 180f) 
 		{
+			rb.AddForce (Vector3.up * deflectForce);
 			rb.AddForce (Vector3.left * deflectForce);
+			if (!soundHasPlayed) 
+			{
+				deflectSound.PlayDelayed (0.1f);
+				soundHasPlayed = true;
+			}
 		}
 	}
 

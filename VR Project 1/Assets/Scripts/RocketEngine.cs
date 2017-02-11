@@ -13,13 +13,16 @@ public class RocketEngine : MonoBehaviour {
 	public float maxDeflectAngle;
 //	public float deflectForceUp;
 	public float timeAlive;
+	AudioSource deflectSound;
 	Rigidbody rb;
-
+	bool soundHasPlayed;
 
 	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
+		deflectSound = GetComponent<AudioSource> ();
+		soundHasPlayed = false;
  	}
 	 	 	
 	// Update is called once per frame
@@ -56,16 +59,28 @@ public class RocketEngine : MonoBehaviour {
 //			rb.AddForce (Vector3.left * deflectForce);
 //		}
 //	}
-
 	void DeflectRight()
 	{
 		if (Vector3.Distance (rb.transform.position, Camera.main.transform.position) < deflectRange 
 			&& Camera.main.transform.eulerAngles.y > minDeflectAngle
 			&& Camera.main.transform.eulerAngles.y <= maxDeflectAngle) 
 		{
+			rb.AddForce (Vector3.up * deflectForce);
 			rb.AddForce (Vector3.right * deflectForce);
+			//deflectSound.Play ();
+			if (!soundHasPlayed) 
+			{
+				deflectSound.PlayDelayed (0.05f);
+				soundHasPlayed = true;
+			}
+			//Invoke ("DeflectSoundStop", 0.5f);
 		}
 	}
+
+//	void DeflectSoundBuffer()
+//	{
+//		soundHasPlayed = false;
+//	}
 
 
 

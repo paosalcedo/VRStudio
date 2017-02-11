@@ -15,6 +15,7 @@ public class AttackScript : MonoBehaviour {
 	public float minTimeUntilNextBall;
 	public float maxTimeUntilNextBall;
 	public bool enableBalls;
+	AudioSource fire;
 
 	// Use this for initialization
 	//Rigidbody rb;
@@ -22,10 +23,9 @@ public class AttackScript : MonoBehaviour {
 	void Start () {
 		aimGuide = GameObject.Find ("BlueAimGuide");
 		aimGuide.SetActive (false);
-		//	rb = GetComponent<Rigidbody> ();
-	//rocketSound = GetComponent<AudioSource>();
 		launcher = GameObject.Find ("BlueLauncher");
 		timeUntilNextBall = 2f;
+		fire = GetComponent<AudioSource> ();
 
 	}
 	
@@ -43,6 +43,7 @@ public class AttackScript : MonoBehaviour {
 			//rocketSound.Play(); 
 			Instantiate (ball, launcher.transform.position, launcher.transform.rotation);
 			timeUntilNextBall = Random.Range (minTimeUntilNextBall, maxTimeUntilNextBall);
+			fire.Play ();
 			//Camera cam = Camera.main;
 			//GameObject theRocket = (GameObject)Instantiate (rocketPrefab, cam.transform.position, cam.transform.rotation);
 			//rb.AddForce (cam.transform.forward * rocketImpulse, ForceMode.Impulse);

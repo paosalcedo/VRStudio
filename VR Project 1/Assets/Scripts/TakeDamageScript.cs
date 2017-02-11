@@ -9,6 +9,7 @@ public class TakeDamageScript : MonoBehaviour {
 	GameObject redScreen;
 	GameObject audioHolder1;
 	GameObject audioHolder2;
+	GameObject player;
 	// Use this for initialization
 	void Start () {
 		redScreen = GameObject.Find ("Impact");
@@ -16,7 +17,7 @@ public class TakeDamageScript : MonoBehaviour {
 		ouch = GetComponent<AudioSource> ();
 		audioHolder1 = GameObject.Find ("AudioHolder1");
 		audioHolder2 = GameObject.Find ("AudioHolder2");
-		
+		player = GameObject.Find ("Player");
 	}
 	
 	// Update is called once per frame
@@ -33,6 +34,8 @@ public class TakeDamageScript : MonoBehaviour {
 			//invoke function for setactive false.
 			Invoke ("DamageAlert", damageAlertTime);
 			ouch.Play ();
+			player.SendMessage ("TakeDamage");
+
 		} 
 
 		if (collision.gameObject.tag == "Deals 2Damage") 
@@ -42,6 +45,7 @@ public class TakeDamageScript : MonoBehaviour {
 			//invoke function for setactive false.
 			Invoke ("DamageAlert", damageAlertTime);
 			audioHolder1.SendMessage ("PlayOuch");
+			player.SendMessage ("TakeDamage");
 		}
 
 		if (collision.gameObject.tag == "Deals 3Damage") 
@@ -51,6 +55,7 @@ public class TakeDamageScript : MonoBehaviour {
 			//invoke function for setactive false.
 			Invoke ("DamageAlert", damageAlertTime);
 			audioHolder2.SendMessage ("PlayOuch");
+			player.SendMessage ("TakeDamage");
 		}
 	}
 

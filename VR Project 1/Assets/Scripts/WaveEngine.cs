@@ -16,17 +16,23 @@ public class WaveEngine : MonoBehaviour {
 	//	public float deflectForceUp;
 	public float timeAlive;
 	Rigidbody rb;
+	AudioSource deflectSound;
+	bool soundHasPlayed;
 
 
 	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
+		deflectSound = GetComponent<AudioSource> ();
+		soundHasPlayed = false;
+
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
+
 		//rb.AddForce(Vector3.back * force); //move the projectiles using AddForce
 		transform.Translate (transform.up * force * Time.deltaTime, Space.World); //move the projectiles
 
@@ -76,7 +82,13 @@ public class WaveEngine : MonoBehaviour {
 			{
 			//rb.AddForce (Vector3.up * deflectForceUp);
 			rb.AddExplosionForce(deflectForceUp, rb.transform.position, 25f);
+			if (!soundHasPlayed) 
+			{
+				deflectSound.PlayDelayed (0.05f);
+				soundHasPlayed = true;
+			}
+
 			}
 		}
-
+		
 }

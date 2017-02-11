@@ -7,6 +7,7 @@ public class RedAttackScript : MonoBehaviour {
 	public GameObject ball;
 	GameObject launcher;
 	GameObject aimGuide;
+	AudioSource fire;
 
 	//public float rocketImpulse = 50.0f;
 	//	public float cooldown =1f;
@@ -30,6 +31,8 @@ public class RedAttackScript : MonoBehaviour {
 
 		aimGuide = GameObject.Find ("RedAimGuide");
 		aimGuide.SetActive (false);
+
+		fire = GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -46,6 +49,7 @@ public class RedAttackScript : MonoBehaviour {
 			//rocketSound.Play(); 
 			Instantiate (ball, launcher.transform.position, launcher.transform.rotation);
 			timeUntilNextBall = Random.Range (minTimeUntilNextBall, maxTimeUntilNextBall);
+			fire.Play ();
 			//Camera cam = Camera.main;
 			//GameObject theRocket = (GameObject)Instantiate (rocketPrefab, cam.transform.position, cam.transform.rotation);
 			//rb.AddForce (cam.transform.forward * rocketImpulse, ForceMode.Impulse);

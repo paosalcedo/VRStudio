@@ -15,6 +15,7 @@ public class WaveAttackScript : MonoBehaviour {
 	public float minTimeUntilNextWave;
 	public float maxTimeUntilNextWave;
 	public bool enableWaves;
+	AudioSource fire;
 
 	// Use this for initialization
 	//Rigidbody rb;
@@ -25,6 +26,7 @@ public class WaveAttackScript : MonoBehaviour {
 		//	rb = GetComponent<Rigidbody> ();
 		//rocketSound = GetComponent<AudioSource>();
 		launcher = GameObject.Find ("WaveLauncher");
+		fire = GetComponent<AudioSource> ();
 		//timeUntilNextWave = 10f;
 
 	}
@@ -43,6 +45,7 @@ public class WaveAttackScript : MonoBehaviour {
 			//rocketSound.Play(); 
 			Instantiate (wave, launcher.transform.position, launcher.transform.rotation);
 			timeUntilNextWave = Random.Range (minTimeUntilNextWave, maxTimeUntilNextWave);
+			fire.Play ();
 			//Camera cam = Camera.main;
 			//GameObject theRocket = (GameObject)Instantiate (rocketPrefab, cam.transform.position, cam.transform.rotation);
 			//rb.AddForce (cam.transform.forward * rocketImpulse, ForceMode.Impulse);
