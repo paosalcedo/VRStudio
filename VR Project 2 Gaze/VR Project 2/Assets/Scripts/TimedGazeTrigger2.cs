@@ -8,13 +8,13 @@ public class TimedGazeTrigger2 : MonoBehaviour {
 
 	// "SerializeField" exposes private vars to the inspector.
 	[SerializeField] float timeLookedAt = 0f; //time, in seconds, spent looking at thing
-	GameObject art1Real;
+	//GameObject art1Real;
 	public Image progressImage; 
 
-	public UnityEvent OnGazeComplete = new UnityEvent(); 
+	public UnityEvent OnGazeComplete2 = new UnityEvent(); 
 
 	void Start(){
-		art1Real = GameObject.Find ("Art1Real");
+		//art1Real = GameObject.Find ("Art1Real");
 	}
 
 	void Update () {
@@ -29,12 +29,12 @@ public class TimedGazeTrigger2 : MonoBehaviour {
 
 		if (angle < 15f) {
 			//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
-			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime); //after 1 second, this variable will be 1f 
+			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * 0.1f); //after 1 second, this variable will be 1f 
 			//did we reach 100%? if so, fire the event and reset.
 
 			if (timeLookedAt == 1f) {
 				timeLookedAt = 0f;
-				OnGazeComplete.Invoke ();
+				OnGazeComplete2.Invoke ();
 			}
 		} else {
 			//"decay" progress if not looking. 
