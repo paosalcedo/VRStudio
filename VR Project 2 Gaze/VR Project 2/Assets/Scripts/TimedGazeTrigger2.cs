@@ -10,12 +10,9 @@ public class TimedGazeTrigger2 : MonoBehaviour {
 	[SerializeField] float timeLookedAt = 0f; //time, in seconds, spent looking at thing
 	//GameObject art1Real;
 	public Image progressImage; 
-
 	public UnityEvent OnGazeComplete2 = new UnityEvent(); 
+	float lookDelay = 0.5f;
 
-	void Start(){
-		//art1Real = GameObject.Find ("Art1Real");
-	}
 
 	void Update () {
 		//1. is the camera looking / pointing at something?
@@ -27,14 +24,15 @@ public class TimedGazeTrigger2 : MonoBehaviour {
 
 		// do stuff based on that angle
 
-		if (angle < 15f) {
+		if (angle < 5f) {
 			//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
-			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * 0.1f); //after 1 second, this variable will be 1f 
+			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
 			//did we reach 100%? if so, fire the event and reset.
 
 			if (timeLookedAt == 1f) {
 				timeLookedAt = 0f;
 				OnGazeComplete2.Invoke ();
+ 
 			}
 		} else {
 			//"decay" progress if not looking. 

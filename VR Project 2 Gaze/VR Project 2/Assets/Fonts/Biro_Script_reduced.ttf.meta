@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a8c20acadd992004d9ef91a95d3e6f41
+timeCreated: 1486934967
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Biro Script reduced
+  fontNames:
+  - Biro Script reduced
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8af1fe1e119a23a499e513cdfe144aac, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

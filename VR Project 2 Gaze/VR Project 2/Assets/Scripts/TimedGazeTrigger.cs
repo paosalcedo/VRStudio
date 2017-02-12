@@ -12,6 +12,7 @@ public class TimedGazeTrigger : MonoBehaviour {
 	public Image progressImage; 
 
 	public UnityEvent OnGazeComplete = new UnityEvent(); 
+	public float lookDelay = 0.5f;
 
 	void Start(){
 		art2Real = GameObject.Find ("Art2Real");
@@ -29,7 +30,7 @@ public class TimedGazeTrigger : MonoBehaviour {
 
 		if (angle < 15f) {
 			//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
-			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime); //after 1 second, this variable will be 1f 
+			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
 			//did we reach 100%? if so, fire the event and reset.
 
 			if (timeLookedAt == 1f) {
