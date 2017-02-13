@@ -33,16 +33,16 @@ public class TimedGazeTrigger : MonoBehaviour {
 		float angle = Vector3.Angle(camLookDir, vectorFromCamToTarget);
 
 		// do stuff based on that angle
-		if(this.gameObject.name == "Art2Trigger" && !art1Complete){
+		//if(this.gameObject.name == "Art2Trigger" && !art1Complete){
 			if (angle < 5f) {
 				//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
 				timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
 				//did we reach 100%? if so, fire the event and reset.
-
+				Debug.Log("Code working!");
 				if (timeLookedAt == 1f) {
 					timeLookedAt = 0f;
 					OnGazeComplete.Invoke ();
-					art1Complete = true;
+					//art1Complete = true;
 				}
 			} else {
 				//"decay" progress if not looking. 
@@ -51,66 +51,66 @@ public class TimedGazeTrigger : MonoBehaviour {
 
 			//update our UI image
 			progressImage.fillAmount = timeLookedAt; // fillAmount is a float from 0-1.
-		}
+		//}
 
-		if (this.gameObject.name == "Art1Trigger" && art1Complete) {
-			if (angle < 5f) {
-				//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
-				timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
-				//did we reach 100%? if so, fire the event and reset.
-
-				if (timeLookedAt == 1f) {
-					timeLookedAt = 0f;
-					OnGazeComplete.Invoke ();
-					art2Complete = true;
-				}
-			} else {
-				//"decay" progress if not looking. 
-				timeLookedAt = Mathf.Clamp01 (timeLookedAt - Time.deltaTime);
-			} 
-
-			//update our UI image
-			progressImage.fillAmount = timeLookedAt; // fillAmount is a float from 0-1.
-		}
-
-		if (this.gameObject.name == "Art4Trigger" && art2Complete) {
-			if (angle < 5f) {
-				//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
-				timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
-				//did we reach 100%? if so, fire the event and reset.
-
-				if (timeLookedAt == 1f) {
-					timeLookedAt = 0f;
-					OnGazeComplete.Invoke ();
-					art3Complete = true;
-				}
-			} else {
-				//"decay" progress if not looking. 
-				timeLookedAt = Mathf.Clamp01 (timeLookedAt - Time.deltaTime);
-			} 
-
-			//update our UI image
-			progressImage.fillAmount = timeLookedAt; // fillAmount is a float from 0-1.
-		}
-
-		if (this.gameObject.name == "Art3Trigger" && art3Complete) {
-			if (angle < 5f) {
-				//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
-				timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
-				//did we reach 100%? if so, fire the event and reset.
-
-				if (timeLookedAt == 1f) {
-					timeLookedAt = 0f;
-					OnGazeComplete.Invoke ();
-					art4Complete = true; 
-				}
-			} else {
-				//"decay" progress if not looking. 
-				timeLookedAt = Mathf.Clamp01 (timeLookedAt - Time.deltaTime);
-			} 
-
-			//update our UI image
-			progressImage.fillAmount = timeLookedAt; // fillAmount is a float from 0-1.
-		}
+//		if (this.gameObject.name == "Art1Trigger" && art1Complete) {
+//			if (angle < 5f) {
+//				//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
+//				timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
+//				//did we reach 100%? if so, fire the event and reset.
+//
+//				if (timeLookedAt == 1f) {
+//					timeLookedAt = 0f;
+//					OnGazeComplete.Invoke ();
+//					art2Complete = true;
+//				}
+//			} else {
+//				//"decay" progress if not looking. 
+//				timeLookedAt = Mathf.Clamp01 (timeLookedAt - Time.deltaTime);
+//			} 
+//
+//			//update our UI image
+//			progressImage.fillAmount = timeLookedAt; // fillAmount is a float from 0-1.
+//		}
+//
+//		if (this.gameObject.name == "Art4Trigger" && art2Complete) {
+//			if (angle < 5f) {
+//				//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
+//				timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
+//				//did we reach 100%? if so, fire the event and reset.
+//
+//				if (timeLookedAt == 1f) {
+//					timeLookedAt = 0f;
+//					OnGazeComplete.Invoke ();
+//					art3Complete = true;
+//				}
+//			} else {
+//				//"decay" progress if not looking. 
+//				timeLookedAt = Mathf.Clamp01 (timeLookedAt - Time.deltaTime);
+//			} 
+//
+//			//update our UI image
+//			progressImage.fillAmount = timeLookedAt; // fillAmount is a float from 0-1.
+//		}
+//
+//		if (this.gameObject.name == "Art3Trigger" && art3Complete) {
+//			if (angle < 5f) {
+//				//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
+//				timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
+//				//did we reach 100%? if so, fire the event and reset.
+//
+//				if (timeLookedAt == 1f) {
+//					timeLookedAt = 0f;
+//					OnGazeComplete.Invoke ();
+//					art4Complete = true; 
+//				}
+//			} else {
+//				//"decay" progress if not looking. 
+//				timeLookedAt = Mathf.Clamp01 (timeLookedAt - Time.deltaTime);
+//			} 
+//
+//			//update our UI image
+//			progressImage.fillAmount = timeLookedAt; // fillAmount is a float from 0-1.
+//		}
 	}
 }
