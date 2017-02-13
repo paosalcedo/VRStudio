@@ -28,7 +28,7 @@ public class TimedGazeTrigger : MonoBehaviour {
 
 		// do stuff based on that angle
 
-		if (angle < 15f) {
+		if (angle < 5f) {
 			//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
 			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
 			//did we reach 100%? if so, fire the event and reset.
