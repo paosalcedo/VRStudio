@@ -12,7 +12,12 @@ public class TimedGazeTrigger2 : MonoBehaviour {
 	public Image progressImage; 
 	public UnityEvent OnGazeComplete2 = new UnityEvent(); 
 	float lookDelay = 0.5f;
+	public bool art1Complete;
 
+	void Start()
+	{
+		art1Complete = false;
+	}
 
 	void Update () {
 		//1. is the camera looking / pointing at something?
@@ -24,7 +29,7 @@ public class TimedGazeTrigger2 : MonoBehaviour {
 
 		// do stuff based on that angle
 
-		if (angle < 5f) {
+		if (angle < 5f && !art1Complete) {
 			//transform.localScale *= 1.01f; //if we are looking within 15 degree FoV, grow object
 			timeLookedAt = Mathf.Clamp01(timeLookedAt + Time.deltaTime * lookDelay); //after 1 second, this variable will be 1f 
 			//did we reach 100%? if so, fire the event and reset.
@@ -32,6 +37,9 @@ public class TimedGazeTrigger2 : MonoBehaviour {
 			if (timeLookedAt == 1f) {
 				timeLookedAt = 0f;
 				OnGazeComplete2.Invoke ();
+				if (this.gameObject.name == "Art2Trigger") {
+					art1Complete = true;
+				}
  
 			}
 		} else {
