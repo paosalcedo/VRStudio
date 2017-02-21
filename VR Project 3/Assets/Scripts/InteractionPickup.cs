@@ -8,6 +8,7 @@ public class InteractionPickup : MonoBehaviour {
 
 	Vector3 lastPosition, fallbackVelocity;
 	Quaternion lastRotation, fallbackTorque;
+	GameObject block;
 
 	// do this stuff for fallback mouse 2D support
 
@@ -41,7 +42,10 @@ public class InteractionPickup : MonoBehaviour {
 
 		if ( hand.GetStandardInteractionButton() == true ) { // on Vive controller, this is trigger
 
+
+
 			hand.AttachObject( gameObject );
+
 
 		}
 
